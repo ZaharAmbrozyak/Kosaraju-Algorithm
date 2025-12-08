@@ -24,7 +24,6 @@ def kosaraju_matrix(graph: 'GraphMatrix') -> tuple:
     Алгоритм Косорайю, що працює на основі графу представленого у вигляді матриці суміжності
     Приймає один аргумент:
     :param graph: представник класу GraphMatrix, з яким ми і будемо працювати
-
     Функція повертає всі найбільші компоненти сильної зв'язності графа, а також час виконання алгоритму
     """
 
@@ -36,7 +35,6 @@ def kosaraju_matrix(graph: 'GraphMatrix') -> tuple:
     # Для роботи алгоритму робимо кілька необхідних списків
     used = [False for _ in range(0, vertices)]
     order, component, components = [], [], []
-
 
     def dfs_1(vertice_1: int) -> None:
         used[vertice_1] = True
@@ -67,7 +65,6 @@ def kosaraju_matrix(graph: 'GraphMatrix') -> tuple:
             dfs_2(vertice_2)
             components.append(component.copy())
             component.clear()
-
     # Саме тут завершується обрахунок часу алгоритму
     time_end = time.perf_counter()
 

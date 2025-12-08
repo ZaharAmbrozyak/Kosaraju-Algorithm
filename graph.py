@@ -46,7 +46,7 @@ class BasicGraph:
         5) Модуль різниці очікуваної та фактичної щільності = {round(abs(self.probability*100-actual_probability),2)}%
         '''
 
-class GraphList(BasicGraph):
+class  GraphList(BasicGraph):
     """
         Клас GraphList, що наслідує клас BasicGraph, де граф представлений
         у вигляді списку суміжності з елементами (a, b), що
