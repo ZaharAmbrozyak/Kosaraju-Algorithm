@@ -3,10 +3,8 @@ from graph import GraphList, GraphMatrix
 from algorithms import kosaraju_list, kosaraju_matrix
 import pandas as pd
 
-SIZES = list(range(20, 201, 20))
-
+SIZES = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
 DENSITIES = [0.1, 0.3, 0.5, 0.7, 0.9]
-
 REPEATS = 1000
 
 def experiment():
@@ -14,12 +12,10 @@ def experiment():
     Основна функція, що запускає всі експерименти та збирає дані.
     Повертає словник з даними для візуалізації
     """
-
     results = {
         'List': {d: [] for d in DENSITIES},
         'Matrix': {d: [] for d in DENSITIES}
     }
-
     for density in DENSITIES:
         for size in SIZES:
             # list
@@ -30,7 +26,7 @@ def experiment():
 
                 _, time = kosaraju_list(g_list)
                 total_time += time
-
+                
             avg_time = total_time / REPEATS * 1000
             results['List'][density].append(avg_time)
 
@@ -126,3 +122,8 @@ def save_to_excel(results, filename="kosaraju_results.xlsx"):
     df = df.round(4)
 
     df.to_excel(filename, index=False)
+
+if __name__ == '__main__':
+    data = experiment()
+    save_to_excel(data)
+    visual(data)
